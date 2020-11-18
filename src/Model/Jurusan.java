@@ -18,6 +18,10 @@ public class Jurusan {
         this.nama = nama;
     }
 
+    public Jurusan() {
+        
+    }
+
     public String getKode() {
         return kode;
     }

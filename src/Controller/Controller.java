@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.Jurusan;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,44 +17,44 @@ import java.util.ArrayList;
  * @author Lenovo
  */
 public class Controller {
-//    static DatabaseHandler conn = new DatabaseHandler();
-//
-//    // SELECT ALL
-//    public static ArrayList<DataUser> getAllUsers() {
-//        ArrayList<DataUser> users = new ArrayList<>();
-//        conn.connect();
-//        String query = "SELECT * FROM datauser";
-//        try {
-//            Statement stmt = conn.con.createStatement();
-//            ResultSet rs = stmt.executeQuery(query);
-//            while (rs.next()) {
-//                DataUser user = new DataUser();
-//                user.setNIK(rs.getString("nik"));
-//                user.setNama(rs.getString("nama"));
-//                user.setTempatLahir(rs.getString("tempatLahir"));
-//                user.setTglLahir(rs.getString("gender"));
-//                user.setGoldar(rs.getString("goldar"));
-//                user.setAlamat(rs.getString("alamat"));
-//                user.setRTRW(rs.getString("rtrw"));
-//                user.setKecamatan(rs.getString("kecamatan"));
-//                user.setKelDesa(rs.getString("kelDesa"));
-//                user.setAgama(rs.getString("agama"));
-//                user.setStatusPerkawinan(rs.getString("statusPerkawinan"));
-//                user.setPekerjaan(rs.getString("pekerjaan"));
-//                user.setKewarganegaraan(rs.getString("kewarganegaraan"));
-//                user.setFoto(rs.getString("foto"));
-//                user.setTtd(rs.getString("ttd"));
-//                user.setTempatPembuatan(rs.getString("tempatPembuatan"));
-//                user.setTglPembuatan(rs.getString("tglPembuatan"));
-//                user.setBerlakuHingga(rs.getString("berlakuHingga"));
-//                users.add(user);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return (users);
-//    }
-//
+    static DatabaseHandler conn = new DatabaseHandler();
+
+    // SELECT ALL Jurusan
+    public static ArrayList<Jurusan> getAllJurusan() {
+        ArrayList<Jurusan> jurusans = new ArrayList<>();
+        conn.connect();
+        String query = "SELECT * FROM jurusan";
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                Jurusan jurusan = new Jurusan();
+                jurusan.setKode(rs.getString("kode"));
+                jurusan.setNama(rs.getString("nama"));
+                jurusans.add(jurusan);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return (jurusans);
+    }
+
+    // INSERT Jurusan
+    public static boolean insertNewUser(Jurusan jurusan) {
+        conn.connect();
+        String query = "INSERT INTO jurusan VALUES(?,?)";
+        try {
+            PreparedStatement stmt = conn.con.prepareStatement(query);
+            stmt.setString(1, jurusan.getKode());
+            stmt.setString(2, jurusan.getNama());
+            stmt.executeUpdate();
+            return (true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return (false);
+        }
+    }
+    
 //    // SELECT WHERE
 //    public static DataUser getUser(String nik) {
 //        conn.connect();

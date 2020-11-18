@@ -12,5 +12,6 @@ package View;
 public class TryScreen {
     public static void main(String[] args){
         new MainMenu();
+//        new InputDataJurusan();
     }
 }
