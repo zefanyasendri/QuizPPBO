@@ -66,7 +66,7 @@ public class MainMenu extends JFrame implements ActionListener{
                 frame.setVisible(false);
                 new LihatSemuaJurusan();
                 break;
-            case "Input Mahasiswa Baru":
+            case "Input Mahasiswa":
                 frame.setVisible(false);
                 new InputMahasiswaBaru();
                 break;
